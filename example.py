@@ -2,17 +2,14 @@
 # swath reprojection utilities for oceancolor data
 #
 # Author: E.R.MAURE
-# License: MIT
 # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 import os
-import time
 import warnings
 from datetime import datetime
 
 import numpy as np
 from dateutil.parser import parse
 
-from pymodules import eeutil
 from pymodules.swathutils import (
     write_tif,
     gdal_translate,
@@ -140,11 +137,11 @@ if __name__ == '__main__':
     for fi, sat in zip(test_file, ('sgli',)):
 
         l2_key = ['QA_flag'] if sat == 'sgli' else ['l2_flags']
-        keys = get_keys(file=fi) + ['l2_flags']
+        keys = get_keys(file=fi) + l2_key
 
         for key in keys:
 
-            if key in ('CDOM', 'TSM'):
+            if key in ('CDOM', 'TSM', 'CHLA'):
                 continue
             # ----------
             # Processing

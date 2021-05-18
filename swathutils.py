@@ -1,8 +1,9 @@
 # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 # swath reprojection utilities for oceancolor data
+# https://oceancolor.gsfc.nasa.gov/
+# https://suzaku.eorc.jaxa.jp/GCOM_C/data/product_std.html
 #
 # Author: E.R.MAURE
-# License: MIT
 # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 import os
 import re
@@ -80,8 +81,7 @@ def get_attrs(file: str, loc=None, flag: str = 'nc'):
     if flag == 'h5':
         dtype = (bytes, np.bytes_)
 
-        exclude = 'Dim0', 'Dim1', 'Error_DN', 'Mask_for_statistics', \
-                  'Maximum_valid_DN', 'Minimum_valid_DN'
+        exclude = 'Dim0', 'Dim1'
 
         def decode(at):
             if type(at) in dtype:
@@ -265,8 +265,14 @@ def get_data(file: str, key: str):
                 attrs = get_attrs(file=file, flag='h5', loc=h5[f'Geometry_data/{key}'].attrs)
                 sds = {**{key: sid}, **attrs}
 
+            elif key == 'QA_flag':
+                attrs = get_attrs(file=file, flag='h5', loc=h5[f'Image_data/{key}'].attrs)
+                sdn = h5[f'Image_data/{key}'][:]
+                attrs['_FillValue'] = attrs['Error_DN']
+                sds = {**{key: sdn}, **attrs}
+
             else:
-                fill_value = np.int32(-1 << 31) if key == 'QA_flag' else np.float32(-32767)
+                fill_value = np.float32(-32767)
                 attrs = dict(h5[f'Image_data/{key}'].attrs)
                 sdn = h5[f'Image_data/{key}'][:]
 
@@ -508,6 +514,7 @@ def split_flags(data: np.ndarray, flag_names: list):
     sds, bits = [], []
     append = sds.append
     bit_apn = bits.append
+    print(data.dtype)
 
     # -- dis --
     for i, flag in enumerate(flag_names):
