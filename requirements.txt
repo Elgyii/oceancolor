@@ -3,7 +3,6 @@
 ##### Requirements with Version Specifiers ######
 
 
-coloredlogs
 h5py
 netcdf4
 pyresample

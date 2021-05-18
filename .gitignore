@@ -12,6 +12,8 @@ __pycache__/
 # ingone data files
 eeutil.py
 gcutil.py
+logger.py
+filesanity.py
 ocbpg_download.py
 .netrc
 

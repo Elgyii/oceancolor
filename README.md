@@ -6,7 +6,6 @@ A set of Python scripts for resampling and reprojection of level-2 swath data ob
 ##### Required Modules
 The modules required for reprojection are
 
-- coloredlogs 
 - h5py
 - netcdf4
 - pyresample
