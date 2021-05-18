@@ -16,7 +16,7 @@ from pymodules import eeutil
 from pymodules.swathutils import (
     write_tif,
     gdal_translate,
-    get_dataset,
+    create_dataset,
     swath_resample,
     flag_band, get_keys
 )
@@ -50,8 +50,7 @@ def swath_pyresample_gdaltrans(file: str, var: str, subarea: dict, epsilon: floa
     # -----------
     # get dataset
     # -----------
-    resample_dst = get_dataset(
-        file=file, subarea=subarea, key=var)
+    resample_dst = create_dataset(file=file, key=var, subarea=subarea)
     resample_dst['epsilon'] = epsilon
 
     # ---------------

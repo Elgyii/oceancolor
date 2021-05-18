@@ -304,7 +304,7 @@ def get_data(file: str, key: str):
         return sds
 
 
-def get_dataset(file: str, key: str, subarea: dict):
+def create_dataset(file: str, key: str, subarea: dict):
     """Constructs a dataset for a given key
 
     Parameters
