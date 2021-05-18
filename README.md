@@ -15,7 +15,7 @@ The modules required for reprojection are
 - (system gdal)
 
 ##### Testing the Tools
-- ```example.py``` testing the processing routines.
+- ```example.py``` used to run processing routines and provides an example of the workflow.
 
 ## Authors
 
