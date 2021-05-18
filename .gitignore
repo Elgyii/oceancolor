@@ -1,0 +1,19 @@
+# ignore .idea files
+.idea
+
+# ignore folders
+eeupload_logs/
+Results/
+
+# ignore python cache
+__pycache__/
+
+
+# ingone data files
+eeutil.py
+gcutil.py
+ocbpg_download.py
+.netrc
+
+
+        

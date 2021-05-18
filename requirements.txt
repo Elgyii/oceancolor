@@ -1,0 +1,12 @@
+####### example-requirements.txt #######
+#
+##### Requirements with Version Specifiers ######
+
+
+coloredlogs
+h5py
+netcdf4
+pyresample
+python-dateutil
+pyproj
+numpy
