@@ -14,6 +14,7 @@ eeutil.py
 gcutil.py
 logger.py
 filesanity.py
+getfile.py
 ocbpg_download.py
 .netrc
 
