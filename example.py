@@ -114,11 +114,11 @@ if __name__ == '__main__':
     BUCKET = 'gs://<bucket>'
     ASSET_ID = '<full-path-to-ee-asset>'
 
-    date = datetime(2006, 5, 3)
+    # date = datetime(2006, 5, 3)
     # S2006123032429.L2_MLAC_OC.nc
     # GC1SG1_202105060128H05210_L2SG_NWLRQ_2001.h5
     # GC1SG1_202004140218J06809_L2SG_IWPRQ_2000.h5
-    test_file = r'C:\Users\Eligio\Documents\NPEC\GEE\remap_flags\data\GC1SG1_202004140218J06809_L2SG_IWPRQ_2000.h5',
+    test_file = r'GC1SG1_202004140218J06809_L2SG_IWPRQ_2000.h5',
 
     # # --------------
     # # download swath
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
         for key in keys:
 
-            if key in ('CDOM', 'TSM', 'CHLA'):
+            if key in ('CDOM', 'TSM',):
                 continue
             # ----------
             # Processing
